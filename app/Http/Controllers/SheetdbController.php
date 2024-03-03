@@ -17,7 +17,7 @@ class SheetdbController extends Controller
         // dd($search);
         // $results = Product::where('name', 'like', "%$search%")->get();
         // return view('products.index', ['results' => $results]);
-
+        // test
         $chart = new QuickChart(array(
             'width' => 500,
             'height' => 300,
