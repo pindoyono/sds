@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use QuickChart;
-use Revolution\Google\Sheets\Facades\Sheets;
 use SheetDB\SheetDB;
 
 class SheetdbController extends Controller
@@ -21,17 +22,6 @@ class SheetdbController extends Controller
             'width' => 500,
             'height' => 300,
         ));
-
-        $chart->setConfig('{
-            type: "bar",
-            data: {
-              labels: ["Hello world", "Test"],
-              datasets: [{
-                label: "Foo",
-                data: [1, 2]
-              }]
-            }
-          }');
 
         $count = 0;
         $no = 0;
@@ -65,23 +55,11 @@ class SheetdbController extends Controller
         $tgl_lahir = "";
         $riasec = [];
 
-        // $sheetdb = new SheetDB('t6avrn4t730yz');
-        $getrange = 'A:I';
-        $sheetdb = Sheets::spreadsheet('spreadsheetID')->sheet('Sheet 1')->all();
+        $sheetdb = DB::table('test_minat')->get();
+        $sheetdb2 = DB::table('penjelasan')->get();
 
-        return $values;
-
-        // $client = new Client();
-
-        // $sheetdb = $client->get('https://sheetdb.io/api/v1/t6avrn4t730yz/search?nisn=1234567890');
-        // $sheetdb->getBody()->getContents();
-        // $sheetdb = $client->get('https://sheetdb.io/api/v1/t6avrn4t730yz/search?nisn=' . $search)->getBody()->getContents();
-        // $sheetdb = json_decode($sheetdb);
-        $sheetdb2 = new SheetDB('lczaqde7xqtvd');
-        // $sheetdb2 = $client->get('https://sheetdb.io/api/v1/lczaqde7xqtvd')->getBody()->getContents();
-        // $sheetdb2 = json_decode($sheetdb2);
-        dd($sheetdb->get());
-        foreach ($sheetdb->get() as $key => $value) {
+        // dd($sheetdb);
+        foreach ($sheetdb as $key => $value) {
             if ($value->nisn == $search) {
                 // dd($value->nama);
                 $nama = $value->nama;
@@ -229,28 +207,59 @@ class SheetdbController extends Controller
         // ];
 
         if ($count > 0) {
-            $chart = "https://quickchart.io/chart?width=50&height=30&c=
-            {
+            // $chart = "https://quickchart.io/chart?width=50&height=30&c=
+            // {
+            //     type: 'radar',
+            //     data: {
+            //       labels: ['Realistic','Investigative','Artistic','Social','Enterprising','Conventional'],
+            //       datasets: [
+            //         { label: 'SDS Holand', data: [" . $RT . ", " . $IT . ", " . $AT . ", " . $ST . ", " . $ET . "," . $CT . "] },
+            //       ],
+            //     },
+            //      options: {
+            //       scale: {
+            //         ticks: {
+            //           min: 0,
+            //           max: " . max($riasec) . ",
+            //           stepSize: " . floor(max($riasec) / 5) . ",
+            //         },
+            //       }
+            //     }
+            //   }
+            //   ";
+            $chart = "https://quickchart.io/chart?width=500&height=300&c=
+              {
                 type: 'radar',
                 data: {
-                  labels: ['Realistic','Investigative','Artistic','Social','Enterprising','Conventional'],
+                   labels: ['Realistic','Investigative','Artistic','Social','Enterprising','Conventional'],
                   datasets: [
-                    { label: 'SDS Holand', data: [" . $RT . ", " . $IT . ", " . $AT . ", " . $ST . ", " . $ET . "," . $CT . "] },
+                     { label: 'SDS Holand', data: [" . $RT . ", " . $IT . ", " . $AT . ", " . $ST . ", " . $ET . "," . $CT . "] },
                   ],
                 },
-                 options: {
-                  scale: {
-                    ticks: {
-                      min: 0,
-                      max: " . max($riasec) . ",
-                      stepSize: " . floor(max($riasec) / 5) . ",
-                    },
-                  }
-                }
-              }
-              ";
+                options: {
+                         scale: {
+                          ticks: {
+                            min: 0,
+                             max: " . max($riasec) . ",
+                             stepSize: " . floor(max($riasec) / 5) . ",
+                           },
+                          }
+                        }
+              }";
             # code...
-            return view('radar-chart', [
+            // return view('radar-chart', [
+            //     'chart' => $chart,
+            //     'riasec' => $riasec,
+            //     'sheetdb2' => $sheetdb2,
+            //     'sum_riasec' => array_sum($riasec),
+            //     'riasec_sort' => $riasec_sort,
+            //     'nama' => $nama,
+            //     'nisn' => $nisn,
+            //     'sekolah' => $sekolah,
+            //     'tgl_lahir' => $tgl_lahir,
+            // ]);
+            $customPaper = [0, 0, 609.4488, 935.433];
+            $pdf = Pdf::loadView('radar-chart', [
                 'chart' => $chart,
                 'riasec' => $riasec,
                 'sheetdb2' => $sheetdb2,
@@ -260,20 +269,7 @@ class SheetdbController extends Controller
                 'nisn' => $nisn,
                 'sekolah' => $sekolah,
                 'tgl_lahir' => $tgl_lahir,
-            ]);
-
-            // $pdf = Pdf::loadView('radar-chart', [
-            //     'data' => $data,
-            //     'riasec' => $riasec,
-            //     'sheetdb2' => $sheetdb2,
-            //     'max_riasec' => max($riasec),
-            //     'sum_riasec' => array_sum($riasec),
-            //     'riasec_sort' => $riasec_sort,
-            //     'nama' => $nama,
-            //     'nisn' => $nisn,
-            //     'sekolah' => $sekolah,
-            //     'tgl_lahir' => $tgl_lahir,
-            // ]);
+            ])->setPaper($customPaper, 'potrait');
 
             return $pdf->stream();
             // return $pdf->download();

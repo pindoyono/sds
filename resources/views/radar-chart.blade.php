@@ -8,20 +8,20 @@
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script> --}}
     <style>
         .header {
-            height: 200px;
+            height: 150px;
             background-color: lightblue;
             margin-bottom: 20px;
         }
 
         .header img {
-            height: 200px;
+            height: 150px;
             float: left;
             margin-right: 50px;
             background-color: white;
         }
 
         .nisn {
-            margin-left: 235px;
+            margin-left: 185px;
         }
 
         .wrap {
@@ -277,10 +277,11 @@
 
         /* Prgress Bar*/
         .progress {
-            margin: 20px auto;
+            /* margin: 0px auto; */
+            margin-bottom: -10px;
             padding: 0;
             width: 90%;
-            height: 30px;
+            height: 15px;
             overflow: hidden;
             background: #e5e5e5;
             border-radius: 6px;
@@ -330,7 +331,7 @@
                 <b>
                     <h2 style="margin-bottom: -40px">Hasil Assesmen Bakat Minat SDS </h2>
                     <h3>
-                        <table style="margin-left: 240px">
+                        <table style="margin-left: 192px">
                             <tr>
                                 <td>Nama</td>
                                 <td>:</td>
@@ -356,36 +357,38 @@
                 </b>
             </div>
         </div>
+        <div style="font-size: 11px;margin-top:-20px">
+
+            <h2>
+                SDS Assesment Test
+            </h2>
+            {{-- <h3>
+                Apa itu SDS ?
+            </h3> --}}
+            SDS adalah singkatan dari Self Directed Search. Ini adalah instrumen terkini yang dikembangkan dari teori
+            vokasional dan karir John Holland. SDS adalah instrumen penilaian karir dan eksplorasi minat yang akan
+            memetakan
+            aspirasi, aktifitas, dan bakat anda dengan beragam pilihan karir dan peluang pendidikan yang paling cocok
+            untuk
+            anda tekuni.
+            {{-- <h3>
+                Bagaimana Cara Kerjanya ?
+            </h3>
+            SDS didasarkan pada teori yang dikembangkan oleh Profesor John Holland, yang dikenal sebagai teori RIASEC, bahwa
+            orang dan lingkungan kerja dapat diklasifikasikan menurut enam tipe utama, yani : Realistis, Investigatif,
+            Artistik, Sosial, Enterpreneur, dan Konvensional. Tipe kepribadian ini dikenal dengan akronim RIASEC.(Realistic,
+            I,Artistic, Social, Enterprising, Conventional --}}
+        </div>
         <h2>
-            SDS Assesment Test
-        </h2>
-        <h3>
-            Apa itu SDS ?
-        </h3>
-        SDS adalah singkatan dari Self Directed Search. Ini adalah instrumen terkini yang dikembangkan dari teori
-        vokasional dan karir John Holland. SDS adalah instrumen penilaian karir dan eksplorasi minat yang akan memetakan
-        aspirasi, aktifitas, dan bakat anda dengan beragam pilihan karir dan peluang pendidikan yang paling cocok untuk
-        anda tekuni.
-        <h3>
-            Bagaimana Cara Kerjanya ?
-        </h3>
-        SDS didasarkan pada teori yang dikembangkan oleh Profesor John Holland, yang dikenal sebagai teori RIASEC, bahwa
-        orang dan lingkungan kerja dapat diklasifikasikan menurut enam tipe utama, yani : Realistis, Investigatif,
-        Artistik, Sosial, Enterpreneur, dan Konvensional. Tipe kepribadian ini dikenal dengan akronim RIASEC.(Realistic,
-        I,Artistic, Social, Enterprising, Conventional
-        <h2>
-            Hasil Assesmen Bakat Minat SDS
-        </h2>
-        <h3>
             Ringkasan Profil Bakat Minat Anda
-        </h3>
-        <div class="table-responsive-sm">
+        </h2>
+        <div class="table-responsive-sm" style="font-size: 10px">
             <table class="table table-bordered">
                 <thead>
                     <tr class="header-table">
                         <th width="10%">RIASEC</th>
                         <th width="5%">Skor</th>
-                        <th width=50%>Presentase</th>
+                        <th width="50%">Presentase</th>
                         <th>Grafik</th>
                     </tr>
                 </thead>
@@ -404,10 +407,11 @@
                                     </div>
                                 </td>
                                 <td rowspan="6">
-                                    <div style="margin: auto;">
+                                    <div>
                                         {{-- <canvas id="radarChart"></canvas> --}}
                                         {{-- <img src="https://quickchart.io/chart?c={type:'radar',data:{labels:['Realistic','Investigative','Artistic','Social','Enterprising','Conventional'],datasets:[{label:'RIASEC',data:[50,60,70,180,190,102]}]}}"> --}}
-                                        <img src="{{ $chart }}">
+                                        <img style="height:200px; margin-bottom:-100px;margin-left:-100px;"
+                                            src="{{ $chart }}">
                                         {{-- {{ dd($chart) }} --}}
 
                                     </div>
@@ -432,7 +436,7 @@
         </div>
 
 
-        <div class="table-responsive-sm">
+        <div class="table-responsive-sm" style="font-size: 10px">
             <table class="table table-bordered">
                 <thead>
                     <tr>
