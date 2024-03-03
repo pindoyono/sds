@@ -357,6 +357,9 @@
                 </b>
             </div>
         </div>
+        <div>
+            <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(256)->generate('https://google.com')) !!} ">
+        </div>
         <div style="font-size: 11px;margin-top:-20px">
 
             <h2>
