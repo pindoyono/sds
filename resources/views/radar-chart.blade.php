@@ -413,6 +413,9 @@
                                         <img style="height:200px; margin-bottom:-100px;margin-left:-30px;"
                                             src="{{ $chart }}">
                                         {{-- {{ dd($chart) }} --}}
+                                        <b>
+                                            {{ $timestamp }}
+                                        </b>
 
                                     </div>
                                 </td>

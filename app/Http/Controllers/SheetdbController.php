@@ -66,6 +66,7 @@ class SheetdbController extends Controller
                 $nisn = $value->nisn;
                 $sekolah = $value->sekolah;
                 $tgl_lahir = $value->tgl_lahir;
+                $timestamp = $value->timestamp;
 
                 $count++;
                 foreach ($value as $key => $value1) {
@@ -269,6 +270,7 @@ class SheetdbController extends Controller
                 'nisn' => $nisn,
                 'sekolah' => $sekolah,
                 'tgl_lahir' => $tgl_lahir,
+                'timestamp' => $timestamp,
                 'url' => 'http://sds.smkn2malinau.sch.id/search?search=' . $search,
             ])->setPaper($customPaper, 'potrait');
 
