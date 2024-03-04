@@ -413,9 +413,7 @@
                                         <img style="height:200px; margin-bottom:-100px;margin-left:-30px;"
                                             src="{{ $chart }}">
                                         {{-- {{ dd($chart) }} --}}
-                                        <b>
-                                            {{ $timestamp }}
-                                        </b>
+
 
                                     </div>
                                 </td>
@@ -476,6 +474,9 @@
     <div>
         {{-- <img width="130px" src="{{ url('/storage/images/riasec.png') }}" alt="Image" /> --}}
         <img width="130px" src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(256)->generate($url)) !!} ">
+        <b>
+            {{ $timestamp }}
+        </b>
     </div>
 </body>
 
