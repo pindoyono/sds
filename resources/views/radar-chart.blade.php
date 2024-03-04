@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Radar Chart Example</title>
+    <title>Hasil Tes SDS Riasec Holland</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"> --}}
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script> --}}
