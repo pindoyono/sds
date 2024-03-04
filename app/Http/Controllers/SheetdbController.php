@@ -272,7 +272,7 @@ class SheetdbController extends Controller
                 'url' => 'http://sds.smkn2malinau.sch.id/search?search=' . $search,
             ])->setPaper($customPaper, 'potrait');
 
-            return $pdf->stream();
+            return $pdf->stream('Hasil Tes SDS ' . $name . '.pdf');
             // return $pdf->download();
         } else {
             return view('error');
