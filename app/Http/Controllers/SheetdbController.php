@@ -269,6 +269,7 @@ class SheetdbController extends Controller
                 'nisn' => $nisn,
                 'sekolah' => $sekolah,
                 'tgl_lahir' => $tgl_lahir,
+                'url' => 'http://sds.smkn2malinau.sch.id/search?search=' . $search,
             ])->setPaper($customPaper, 'potrait');
 
             return $pdf->stream();
