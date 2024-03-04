@@ -66,7 +66,7 @@ class SheetdbController extends Controller
                 $nisn = $value->nisn;
                 $sekolah = $value->sekolah;
                 $tgl_lahir = $value->tgl_lahir;
-                $timestamp = $value->timestamp;
+                $timestamp = $value->Timestamp;
 
                 $count++;
                 foreach ($value as $key => $value1) {
