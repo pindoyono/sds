@@ -379,7 +379,7 @@
             Artistik, Sosial, Enterpreneur, dan Konvensional. Tipe kepribadian ini dikenal dengan akronim RIASEC.(Realistic,
             I,Artistic, Social, Enterprising, Conventional --}}
         </div>
-        <h2>
+        <h2 style="margin-top:-10px;margin-bottom:-10x">
             Ringkasan Profil Bakat Minat Anda
         </h2>
         <div class="table-responsive-sm" style="font-size: 10px">
