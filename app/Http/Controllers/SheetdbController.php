@@ -240,7 +240,7 @@ class SheetdbController extends Controller
                          scale: {
                           ticks: {
                             min: 0,
-                             max: " . max($riasec) . ",
+                             max: " . (max($riasec) + 3) . ",
                              stepSize: " . floor(max($riasec) / 5) . ",
                            },
                           }
