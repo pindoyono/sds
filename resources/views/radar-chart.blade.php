@@ -331,7 +331,7 @@
                 <b>
                     <h2 style="margin-bottom: -40px">Hasil Assesmen Bakat Minat SDS </h2>
                     <h3>
-                        <table style="margin-left: 192px">
+                        <table style="margin-left: 192px;">
                             <tr>
                                 <td>Nama</td>
                                 <td>:</td>
@@ -356,9 +356,6 @@
                     </h3>
                 </b>
             </div>
-        </div>
-        <div>
-            <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(256)->generate('https://google.com')) !!} ">
         </div>
         <div style="font-size: 11px;margin-top:-20px">
 
@@ -473,7 +470,10 @@
             </table>
         </div>
     </div>
-
+    <div>
+        {{-- <img width="130px" src="{{ url('/storage/images/riasec.png') }}" alt="Image" /> --}}
+        <img width="130px" src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(256)->generate('https://google.com')) !!} ">
+    </div>
 
 </body>
 
