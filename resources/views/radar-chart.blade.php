@@ -472,6 +472,7 @@
         </div>
     </div>
     <div>
+        <br>
         {{-- <img width="130px" src="{{ url('/storage/images/riasec.png') }}" alt="Image" /> --}}
         <img width="130px" src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(256)->generate($url)) !!} ">
         <b>
