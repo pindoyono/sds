@@ -410,7 +410,7 @@
                                     <div>
                                         {{-- <canvas id="radarChart"></canvas> --}}
                                         {{-- <img src="https://quickchart.io/chart?c={type:'radar',data:{labels:['Realistic','Investigative','Artistic','Social','Enterprising','Conventional'],datasets:[{label:'RIASEC',data:[50,60,70,180,190,102]}]}}"> --}}
-                                        <img style="height:200px; margin-bottom:-100px;margin-left:-100px;"
+                                        <img style="height:200px; margin-bottom:-100px;margin-left:-90px;"
                                             src="{{ $chart }}">
                                         {{-- {{ dd($chart) }} --}}
 
