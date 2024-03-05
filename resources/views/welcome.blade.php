@@ -852,9 +852,10 @@
         @endif
 
         <form action="search" method="GET">
-            <input style="width: 250px;height:50px" type="text" name="search" placeholder="Cari NISN">
+            <input type="text" name="search" placeholder="Cari NISN">
             <button type="submit">
-                <h1>
+                <h1
+                    class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
                     Search
                 </h1>
             </button>
