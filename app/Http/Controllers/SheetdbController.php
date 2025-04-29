@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 use QuickChart;
 use SheetDB\SheetDB;
 
@@ -55,18 +56,26 @@ class SheetdbController extends Controller
         $tgl_lahir = "";
         $riasec = [];
 
-        $sheetdb = DB::table('test_minat')->get();
+        // $sheetdb = DB::table('test_minat')->get();
+        $sheetdb = Http::get('https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLiOelpuZiLogpjCRG9TKlzilu8mGwfCXrT6IYR-C7BK-0x8fpAxNJItT6XB9yiljdxvvG5hxstqcU1r90HiQBNTiZ3wNuPoqwmelQdZYfem0bvi3rlfgU0mDrI9Duf8O0Ex2RnvS0LlfTZYaY6K5iPGjfjuzNKvp100D61El674JSmmNGcgWgL9-RVlzPVAddXXdEMCF_bJc666LX7kpIImdiUxWNInMCUu34g-8u9NhYxUVXNlAtcf2RJKo4Lsc_UuPaRin_NKHkWS-DbNXuvOMfzLz4vN8aJCt5xv&lib=MxZIs-k-J6bdNGISALUOXGhh0s752Y3-6');
+        if ($sheetdb->successful()) {
+            $data = $sheetdb->json();
+        }
+        // dd($data);
         $sheetdb2 = DB::table('penjelasan')->get();
 
+        // foreach ($data as $key => $value) {
+        //     dd($value['NISN']);
+        // }
         // dd($sheetdb);
-        foreach ($sheetdb as $key => $value) {
-            if ($value->nisn == $search) {
+        foreach ($data as $key => $value) {
+            if ($value['NISN'] == $search) {
                 // dd($value->nama);
-                $nama = $value->nama;
-                $nisn = $value->nisn;
-                $sekolah = $value->sekolah;
-                $tgl_lahir = $value->tgl_lahir;
-                $timestamp = $value->Timestamp;
+                $nama = $value['Nama'];
+                $nisn = $value['NISN'];
+                $sekolah = $value['Asal Sekolah'];
+                $tgl_lahir = $value['Tanggal Lahir'];
+                $timestamp = $value['Timestamp'];
 
                 $count++;
                 foreach ($value as $key => $value1) {
@@ -248,17 +257,18 @@ class SheetdbController extends Controller
                         }
               }";
             # code...
-            // return view('radar-chart', [
-            //     'chart' => $chart,
-            //     'riasec' => $riasec,
-            //     'sheetdb2' => $sheetdb2,
-            //     'sum_riasec' => array_sum($riasec),
-            //     'riasec_sort' => $riasec_sort,
-            //     'nama' => $nama,
-            //     'nisn' => $nisn,
-            //     'sekolah' => $sekolah,
-            //     'tgl_lahir' => $tgl_lahir,
-            // ]);
+            return view('radar-chart', [
+                'chart' => $chart,
+                'riasec' => $riasec,
+                'sheetdb2' => $sheetdb2,
+                'sum_riasec' => array_sum($riasec),
+                'riasec_sort' => $riasec_sort,
+                'nama' => $nama,
+                'nisn' => $nisn,
+                'sekolah' => $sekolah,
+                'tgl_lahir' => $tgl_lahir,
+                'url' => 'http://sds.smkn2malinau.sch.id/search?search=' . $search,
+            ]);
             $customPaper = [0, 0, 609.4488, 935.433];
             $pdf = Pdf::loadView('radar-chart', [
                 'chart' => $chart,
@@ -274,7 +284,7 @@ class SheetdbController extends Controller
                 'url' => 'http://sds.smkn2malinau.sch.id/search?search=' . $search,
             ])->setPaper($customPaper, 'potrait');
 
-            return $pdf->stream('Hasil Tes SDS ' . $nama . '.pdf');
+            // return $pdf->stream('Hasil Tes SDS ' . $nama . '.pdf');
             // return $pdf->download();
         } else {
             return view('error');
