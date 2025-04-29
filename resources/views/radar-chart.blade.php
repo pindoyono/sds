@@ -474,7 +474,7 @@
     <div>
         <br>
         {{-- <img width="130px" src="{{ url('/storage/images/riasec.png') }}" alt="Image" /> --}}
-        <img width="100px" src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(256)->generate($url)) !!} ">
+        {{-- <img width="100px" src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(256)->generate($url)) !!} "> --}}
         <b style="font-size: 10">
             <br>
             {{ $timestamp }}
