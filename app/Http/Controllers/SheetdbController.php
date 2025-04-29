@@ -267,6 +267,7 @@ class SheetdbController extends Controller
             //     'nisn' => $nisn,
             //     'sekolah' => $sekolah,
             //     'tgl_lahir' => $tgl_lahir,
+            //     'timestamp' => $timestamp,
             //     'url' => 'http://sds.smkn2malinau.sch.id/search?search=' . $search,
             // ]);
             $customPaper = [0, 0, 609.4488, 935.433];
@@ -284,7 +285,7 @@ class SheetdbController extends Controller
                 'url' => 'http://sds.smkn2malinau.sch.id/search?search=' . $search,
             ])->setPaper($customPaper, 'potrait');
 
-            // return $pdf->stream('Hasil Tes SDS ' . $nama . '.pdf');
+            return $pdf->stream('Hasil Tes SDS ' . $nama . '.pdf');
             // return $pdf->download();
         } else {
             return view('error');
