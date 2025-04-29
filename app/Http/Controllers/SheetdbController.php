@@ -248,17 +248,17 @@ class SheetdbController extends Controller
                         }
               }";
             # code...
-            return view('radar-chart', [
-                'chart' => $chart,
-                'riasec' => $riasec,
-                'sheetdb2' => $sheetdb2,
-                'sum_riasec' => array_sum($riasec),
-                'riasec_sort' => $riasec_sort,
-                'nama' => $nama,
-                'nisn' => $nisn,
-                'sekolah' => $sekolah,
-                'tgl_lahir' => $tgl_lahir,
-            ]);
+            // return view('radar-chart', [
+            //     'chart' => $chart,
+            //     'riasec' => $riasec,
+            //     'sheetdb2' => $sheetdb2,
+            //     'sum_riasec' => array_sum($riasec),
+            //     'riasec_sort' => $riasec_sort,
+            //     'nama' => $nama,
+            //     'nisn' => $nisn,
+            //     'sekolah' => $sekolah,
+            //     'tgl_lahir' => $tgl_lahir,
+            // ]);
             $customPaper = [0, 0, 609.4488, 935.433];
             $pdf = Pdf::loadView('radar-chart', [
                 'chart' => $chart,
